@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DTPMBanQuanAo.Models.SanPham> 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>DANH SÁCH SẢN PHẨM</h1>
+<p>
+    <a class="btn btn-success" asp-action="Create" asp-controller="Product">Thêm Mới Sản Phẩm</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tên Sản Phẩm</th>
+            <th>Hình Ảnh Sản Phẩm</th>
+            <th>Giá Bán</th>
+            <th>Giá Nhập</th>
+            <th>Loại Sản Phẩm</th>
+            <th>Thương Hiệu</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ten</td>
+                <td>
+                    <img style="width:50px;height:50px" src="~/Images/@item.HinhAnh" />
+                </td>
+                <td>@item.DonGiaBan</td>
+                <td>@item.DonGiaNhap</td>
+                <td>@item.LoaiSanPham.TenLoaiSP</td>
+                <td>@item.ThuongHieu.TenThuongHieu</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="SuaSanPham" asp-route-id="@item.Id">Sửa</a> |
+                    <a class="btn btn-info" asp-action="ThemChiTietSanPham" asp-route-Id="@item.Id">Chi Tiết</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Product" asp-route-Id="@item.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

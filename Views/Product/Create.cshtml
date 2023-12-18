@@ -1,0 +1,78 @@
+﻿@model DTPMBanQuanAo.Models.SanPham
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form asp-controller="Product" asp-action="Create"id="form" enctype="multipart/form-data" method="post" >
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-group">
+                <label asp-for="Ten" class="control-label"></label>
+                <input asp-for="Ten" class="form-control" placeholder="Nhập tên sản phẩm"/>
+                <span asp-validation-for="Ten" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label"></label>
+                <textarea rows="5" asp-for="MoTa" class="form-control" placeholder="Nhập mô tả sản phẩm"></textarea>
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-lable" for="first-name">
+                    Upload Photo :<span class="required"></span>
+                </label> <br>
+                @* <div class="" id="dropzone">
+                    <div action="/Home/Upload" class="dropzone" id="uploader">
+                        Drop Files here or click to upload. <br/>
+                    </div>
+                </div> *@
+                <input asp-for="FileImage" accept="image/*" class="custom-file-input" id="chooseImg">
+                <span asp-validation-for="FileImage" class="text-danger"></span>
+            </div>
+            <div class="form-group" >
+                <img width="200px" height="200px" src="~/Images/NoImage.png" id="imgPreview" alt="Product Image">
+            </div>
+            <div class="form-group">
+                <a style="height: 35px;" class="btn btn-primary"asp-controller="Product" asp-action="Index">Back</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="DonGiaNhap" class="control-label"></label>
+                <input asp-for="DonGiaNhap" class="form-control" disabled />
+                <span asp-validation-for="DonGiaNhap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonGiaBan" class="control-label"></label>
+                <input asp-for="DonGiaBan" class="form-control" placeholder="Nhập giá bán"/>
+                <span asp-validation-for="DonGiaBan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoaiSanPhamId" class="control-label"></label>
+                <select asp-for="LoaiSanPhamId" class="form-control" asp-items="ViewBag.LoaiSanPham "></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThuongHieuId" class="control-label"></label>
+                <select asp-for="ThuongHieuId" class="form-control" asp-items="ViewBag.ThuongHieu"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Tạo sản phẩm" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function(){
+            $('#chooseImg').change(function(e){
+                var reader = new FileReader();
+                reader.onload= function(){
+                    var output = document.getElementById('imgPreview');
+                    output.src = reader.result;
+                }
+                reader.readAsDataURL(e.target.files[0])
+            });
+        })
+    </script>
+}

@@ -1,0 +1,24 @@
+﻿@model DTPMBanQuanAo.Models.ChiTietPNK
+<div class="form-group-ctpnk editorRows">
+    <div class="dongia col-md-3">
+        <label asp-for="@Model.DonGiaNhap" class="control-label"></label>
+        <input asp-for="@Model..DonGiaNhap" class="form-control" placeholder="Nhập giá nhập" />
+        <span asp-validation-for="@Model.DonGiaNhap" class="text-danger"></span>
+    </div>
+    <div class="soluong col-md-3">
+        <label asp-for="@Model.SoLuong" class="control-label"></label>
+        <input asp-for="@Model.SoLuong" type="number" min="1" class="form-control" />
+        <span asp-validation-for="@Model.SoLuong" class="text-danger"></span>
+    </div>
+    <div class="sanphamid col-md-3">
+        <label asp-for="@Model.SanPhamId" class="control-label"></label>
+        <select asp-for="@Model.SanPhamId" class="form-control" asp-items="ViewBag.SanPham"></select>
+    </div>
+    <div class="trangthai col-md-3">
+        <label asp-for="PhieuNhapKho.TrangThai" class="control-label"></label>
+        <select class="form-select" aria-label="Default select example">
+            <option value="0">Đã thanh toán</option>
+            <option value="1">Chưa thanh toán</option>
+        </select>
+    </div>
+</div>

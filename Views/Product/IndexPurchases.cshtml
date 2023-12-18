@@ -1,0 +1,34 @@
+@model IEnumerable<DTPMBanQuanAo.Models.PhieuNhapKho> 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>DANH SÁCH PHIẾU NHẬP KHO</h1>
+<p>
+    <a class="btn btn-success" asp-action="CreatePurchases" asp-controller="Product">Thêm Phiếu nhập kho</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ngày nhập</th>
+            <th>Nhan vien Id</th>
+            <th>Mô tả</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.NgayNhap</td>
+                <td>@item.NhanVienId</td>
+                <td>@item.MoTa</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="SuaSanPham" asp-route-id="@item.Id">Sửa</a> |
+                    <a class="btn btn-info" asp-action="IndexPurchasesDetails" asp-route-Id="@item.Id">Chi Tiết</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Product" asp-route-Id="@item.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

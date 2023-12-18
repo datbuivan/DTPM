@@ -1,0 +1,55 @@
+@model DTPMBanQuanAo.Models.Purchases;
+@{
+    Layout ="~/Views/Shared/_Layout.cshtml";
+}
+<form asp-controller="Product" asp-action="CreatePurchases" id="form" enctype="multipart/form-data" method="post" >
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-group">
+                <label asp-for="PhieuNhapKho.NhanVienId" class="control-label"></label>
+                <select asp-for="PhieuNhapKho.NhanVienId" class="form-control" asp-items="ViewBag.TaiKhoan"></select>
+                <span asp-validation-for="PhieuNhapKho.NhanVienId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhieuNhapKho.MoTa" class="control-label"></label>
+                <textarea rows="5" asp-for="PhieuNhapKho.MoTa" class="form-control" placeholder="Nhập mô tả sản phẩm"></textarea>
+                <span asp-validation-for="PhieuNhapKho.MoTa" class="text-danger"></span>
+            </div>
+            @for(int item=0; item<2;item++){
+                <div class="form-group-ctpnk editorRows">
+                    <div class="dongia col-md-4">
+                        <label asp-for="ChiTietPNK[item].DonGiaNhap" class="control-label"></label>
+                        <input asp-for="ChiTietPNK[item].DonGiaNhap" class="form-control" placeholder="Nhập giá nhập" />
+                        <span asp-validation-for="ChiTietPNK[item].DonGiaNhap" class="text-danger"></span>
+                    </div>
+                    <div class="soluong col-md-4">
+                        <label asp-for="ChiTietPNK[item].SoLuong" class="control-label"></label>
+                        <input asp-for="ChiTietPNK[item].SoLuong" type="number" min="1" class="form-control" />
+                        <span asp-validation-for="ChiTietPNK[item].SoLuong" class="text-danger"></span>
+                    </div>
+                    <div class="sanphamid col-md-4">
+                        <label asp-for="ChiTietPNK[item].SanPhamId" class="control-label"></label>
+                        <select asp-for="ChiTietPNK[item].SanPhamId" class="form-control" asp-items="ViewBag.SanPham"></select>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="PhieuNhapKho.TrangThai" class="control-label"></label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="0">Đã thanh toán</option>
+                    <option value="1">Chưa thanh toán</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Tạo phiếu nhập" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}

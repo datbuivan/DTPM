@@ -1,0 +1,14 @@
+@model DTPMBanQuanAo.Models.SanPham
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+    Layout =  "/Views/Shared/_Layout.cshtml";   
+}
+<p>Có chắc chắn xóa sản phẩm?</p>
+<h4>@Model.Ten</h4>
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index">Danh sách sản phẩm</a>
+    </form>
+</div>

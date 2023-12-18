@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form  id="form" enctype="multipart/form-data" method="post" 
+    data-pasley-validate class="form-horizontal form-label-left">
+    <div class="form-group">
+        <label class="control-lable" for="first-name">
+            Upload Photo <span class="required">*</span>
+        </label>
+        <div class="" id="dropzone">
+            <div action="/Home/Upload" class="dropzone" id="uploader">
+                Drop Files here or click to upload. <br />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/dropzone/dropzone.min.js"></script>
+    <link href="~/lib/dropzone/dropzone.min.css" rel="stylesheet" />
+}

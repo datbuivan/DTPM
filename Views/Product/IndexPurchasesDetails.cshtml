@@ -1,0 +1,33 @@
+@model IEnumerable<DTPMBanQuanAo.Models.ChiTietPNK> 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>DANH SÁCH CHI TIẾT</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Số Lượng</th>
+            <th>Sản Phẩm</th>
+            <th>Phiếu Nhập Kho Id</th>
+            <th>Dơn Gía Nhập</th>
+            <th>Tổng Tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.SoLuong</td>
+                <td>@item.SanPhamId</td>
+                <td>@item.PhieuNhapKhoId</td>
+                <td>@item.DonGiaNhap</td>
+                <td>@item.TongTienMuc</td>
+            </tr>
+        }
+    </tbody>
+</table>
+    <p>
+        <a class="btn btn-success" asp-action="IndexPurchases" asp-controller="Product">Back</a>
+    </p>
